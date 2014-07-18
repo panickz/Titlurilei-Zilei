@@ -324,5 +324,134 @@
   </body>
 </html>
 <script type="text/javascript">
-$(function(){$.ajax({async:false,type:"GET",url:"http://www.titlurile-zilei.ro/getWeatherJSON",dataType:"JSON",success:function(e){console.log(e.weather[0].icon);$(".temperature").append('<div class="temp">'+e.main.temp+'</div><img src="http://openweathermap.org/img/w/'+e.weather[0].icon+'.png">')}});$(".Mmenu").sidr({name:"menu",side:"left",source:"#menu"});$(".iconFb").sidr({name:"sidr-right",side:"right"});$.ajax({async:false,type:"GET",url:"http://www.titlurile-zilei.ro/appDate",dataType:"HTML",success:function(e){$(".data").append(e)}});if(typeof window.localStorage.getItem("covers")!="undefined"&&window.localStorage.getItem("covers")!==null){var e=JSON.parse(window.localStorage.getItem("covers"));console.log(e);$.ajax({async:false,type:"GET",url:"http://www.titlurile-zilei.ro/appCategory",dataType:"JSON",success:function(e){for(var t in e){$("#menu ul").append('<li><a href="index.html#page'+e[t].id+"\"  onclick=\"$.sidr('close', 'menu');\">"+e[t].category+"</a></li>")}}});for(var t in e){$("#cat"+e[t].id).append('<li><div class="cover"><a class="favIt" data-id="'+e[t].hook+'" data-cover="'+e[t].cover+'">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+e[t].cover+'" rel="gal'+e[t].id+'" class="swipebox" data-id="'+e[t].hook+'" data-cover="'+e[t].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+e[t].cover+'" alt=""></a></div>'+e[t].name+"</li>")}}else{$.ajax({async:false,type:"GET",url:"http://www.titlurile-zilei.ro/appCategory",dataType:"JSON",success:function(e){var t=1;var n=new Array;var r=new Array;for(var i in e){$("#menu ul").append('<li><a href="index.html#page'+e[i].id+"\" onclick=\"$.sidr('close', 'menu');\">"+e[i].category+"</a></li>");$.ajax({async:false,type:"GET",url:"http://www.titlurile-zilei.ro/appArchive?cat="+e[i].id,dataType:"JSON",success:function(s){for(var o in s){$("#cat"+e[i].id).append('<li><div class="cover"><a class="favIt" data-id="'+s[o].hook+'" data-cover="'+s[o].cover+'">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+s[o].cover+'" rel="gal'+t+'" class="swipebox" data-id="'+s[o].hook+'" data-cover="'+s[o].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+s[o].cover+'" alt=""></a>'+s[o].name+"</div></li>");r=[{id:e[i].id,hook:s[o].hook,cover:s[o].cover,name:s[o].name}];n=$.merge(n,r)}t=t+1}})}window.localStorage.setItem("covers",JSON.stringify(n));var s=localStorage.getItem("covers")}})}if(localStorage.getItem("favJSON")!==null){var n=JSON.parse(localStorage.getItem("favJSON"));for(var t in n){$("#sidr-right").append('<div style="width:100%; text-align:center;"> 					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+n[t].cover+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+n[t].cover+'" alt="" style="width: 70%;margin: 23px;"></a></div>')}}$(".favIt").click(function(){var e=$(this).attr("data-id");var t=$(this).attr("data-cover");if(localStorage.getItem("favJSON")===null){var n=[{id:e,cover:t}];window.localStorage.setItem("favJSON",JSON.stringify(n));var r=window.localStorage.getItem("favJSON");$("#sidr-right").append('<div style="width:100%; text-align:center;"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+t+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+t+'" alt="" style="width: 70%;margin: 23px;"></a> 				  </div>');$(this).html('<img src="images/star.png" width="11px" style="width:11px" />')}else{var n=[{id:e,cover:t}];var i=JSON.parse(localStorage.getItem("favJSON"));var s=0;for(var o in i){if(i[o].id===e){s=s+1}}if(s===0){var u=$.merge(i,n);window.localStorage.setItem("favJSON",JSON.stringify(u));var r=localStorage.getItem("favJSON");$("#sidr-right").append('<div style="width:100%; text-align:center;"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+t+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+t+'" alt="" style="width: 70%;margin: 23px;"></a></div>');$(this).html('<img src="images/star.png" width="11px" style="width:11px" />')}}})});$(document).ready(function(){$(".swipebox").swipebox({useCSS:true,useSVG:true,hideBarsOnMobile:false,hideBarsDelay:3e3})})
+$(function () {
+    $.ajax({
+        async: false,
+        type: "GET",
+        url: "http://www.titlurile-zilei.ro/getWeatherJSON",
+        dataType: "JSON",
+        success: function (e) {
+            console.log(e.weather[0].icon);
+            $(".temperature").append('<div class="temp">' + e.main.temp + '</div><img src="http://openweathermap.org/img/w/' + e.weather[0].icon + '.png">')
+        }
+    });
+    $(".Mmenu").sidr({
+        name: "menu",
+        side: "left",
+        source: "#menu"
+    });
+    $(".iconFb").sidr({
+        name: "sidr-right",
+        side: "right"
+    });
+    $.ajax({
+        async: false,
+        type: "GET",
+        url: "http://www.titlurile-zilei.ro/appDate",
+        dataType: "HTML",
+        success: function (e) {
+            $(".data").append(e)
+        }
+    });
+    if (typeof window.localStorage.getItem("covers") != "undefined" && window.localStorage.getItem("covers") !== null) {
+        var e = JSON.parse(window.localStorage.getItem("covers"));
+        console.log(e);
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: "http://www.titlurile-zilei.ro/appCategory",
+            dataType: "JSON",
+            success: function (e) {
+                for (var t in e) {
+                    $("#menu ul").append('<li><a href="index.html#page' + e[t].id + "\"  onclick=\"$.sidr('close', 'menu');\">" + e[t].category + "</a></li>")
+                }
+            }
+        });
+        for (var t in e) {
+            $("#cat" + e[t].id).append('<li><div class="cover"><a class="favIt" data-id="' + e[t].hook + '" data-cover="' + e[t].cover + '">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + e[t].cover + '" rel="gal' + e[t].id + '" class="swipebox" data-id="' + e[t].hook + '" data-cover="' + e[t].cover + '"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + e[t].cover + '" alt=""></a></div>' + e[t].name + "</li>")
+        }
+    } else {
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: "http://www.titlurile-zilei.ro/appCategory",
+            dataType: "JSON",
+            success: function (e) {
+                var t = 1;
+                var n = new Array;
+                var r = new Array;
+                for (var i in e) {
+                    $("#menu ul").append('<li><a href="index.html#page' + e[i].id + "\" onclick=\"$.sidr('close', 'menu');\">" + e[i].category + "</a></li>");
+                    $.ajax({
+                        async: false,
+                        type: "GET",
+                        url: "http://www.titlurile-zilei.ro/appArchive?cat=" + e[i].id,
+                        dataType: "JSON",
+                        success: function (s) {
+                            for (var o in s) {
+                                $("#cat" + e[i].id).append('<li><div class="cover"><a class="favIt" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" rel="gal' + t + '" class="swipebox" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" alt=""></a>' + s[o].name + "</div></li>");
+                                r = [{
+                                    id: e[i].id,
+                                    hook: s[o].hook,
+                                    cover: s[o].cover,
+                                    name: s[o].name
+                                }];
+                                n = $.merge(n, r)
+                            }
+                            t = t + 1
+                        }
+                    })
+                }
+                window.localStorage.setItem("covers", JSON.stringify(n));
+                var s = localStorage.getItem("covers")
+            }
+        })
+    } if (localStorage.getItem("favJSON") !== null) {
+        var n = JSON.parse(localStorage.getItem("favJSON"));
+        for (var t in n) {
+            $("#sidr-right").append('<div style="width:100%; text-align:center;"> 					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + n[t].cover + '" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + n[t].cover + '" alt="" style="width: 70%;margin: 23px;"></a></div>')
+        }
+    }
+    $(".favIt").click(function () {
+        var e = $(this).attr("data-id");
+        var t = $(this).attr("data-cover");
+        if (localStorage.getItem("favJSON") === null) {
+            var n = [{
+                id: e,
+                cover: t
+            }];
+            window.localStorage.setItem("favJSON", JSON.stringify(n));
+            var r = window.localStorage.getItem("favJSON");
+            $("#sidr-right").append('<div style="width:100%; text-align:center;"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + t + '" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + t + '" alt="" style="width: 70%;margin: 23px;"></a> 				  </div>');
+            $(this).html('<img src="images/star.png" width="11px" style="width:11px" />')
+        } else {
+            var n = [{
+                id: e,
+                cover: t
+            }];
+            var i = JSON.parse(localStorage.getItem("favJSON"));
+            var s = 0;
+            for (var o in i) {
+                if (i[o].id === e) {
+                    s = s + 1
+                }
+            }
+            if (s === 0) {
+                var u = $.merge(i, n);
+                window.localStorage.setItem("favJSON", JSON.stringify(u));
+                var r = localStorage.getItem("favJSON");
+                $("#sidr-right").append('<div style="width:100%; text-align:center;"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + t + '" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + t + '" alt="" style="width: 70%;margin: 23px;"></a></div>');
+                $(this).html('<img src="images/star.png" width="11px" style="width:11px" />')
+            }
+        }
+    })
+});
+$(document).ready(function () {
+    $(".swipebox").swipebox({
+        useCSS: true,
+        useSVG: true,
+        hideBarsOnMobile: false,
+        hideBarsDelay: 3e3
+    })
+})
  </script>				 
