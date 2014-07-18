@@ -355,35 +355,13 @@
 		$('.Mmenu').sidr({
 	      name: 'menu',
 	      side: 'left', // By default
-	      source: '#menu',
-		  onClose:function(){
-			   $(document).on('touchmove', function(event){
-				   return true;
-			   });
-   		  },
-		  onOpen:function(){
-			   $(document).on('touchmove', function(event){
-				   event.target.click();
-				   event.preventDefault();
-			   });
-		  }
+	      source: '#menu'
 	    });
 	    $('.iconFb').sidr({
 	      name: 'sidr-right',
-	      side: 'right',
-		  onClose:function(){
-			   $(document).on('touchmove', function(event){
-				   return true;
-			   });
-   		  },
-		  onOpen:function(){
-			   $(document).on('touchmove', function(event){
-				   event.target.click();
-				   event.preventDefault();
-			   });
-		  }
-
-	    });
+	      side: 'right'
+		 });
+	
 		
 		$.ajax({
 			async: false,
@@ -486,7 +464,7 @@
 					}
 					window.localStorage.setItem("covers", JSON.stringify(coverHTML));
 					var value = localStorage.getItem("covers");
-					console.log(value);
+					//console.log(value);
 				}
 			});	
 				
