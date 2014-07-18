@@ -325,18 +325,7 @@
   </body>
 </html>
 <script type="text/javascript">
-	
-	$(window).touchwipe({
-        wipeLeft: function() {
-          // Open
-          $.sidr('open', 'close');
-        },
-        wipeRight: function() {
-          // Open
-          $.sidr('open', 'menu');
-        },
-        preventDefaultEvents: false
-      });
+
         $(function() {
     
     	
@@ -357,6 +346,7 @@
 	      side: 'left', // By default
 	      source: '#menu'
 	    });
+		
 	    $('.iconFb').sidr({
 	      name: 'sidr-right',
 	      side: 'right'
