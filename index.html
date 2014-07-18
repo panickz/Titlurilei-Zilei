@@ -392,7 +392,7 @@
 			for(var a in archive){
 									
 				$('#cat'+archive[a].id).append('<li> \
-					<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+archive[a].id+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'<a class="favIt" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'">FAV</a></div> \
+					<div class="cover"><a class="favIt" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+archive[a].id+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a></div>'+archive[a].name+' \
 				  </li>');
 				 
 				 
@@ -427,7 +427,7 @@
 								for(var a in archive){
 									
 									$('#cat'+data[x].id).append('<li> \
-										<div class="cover"><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'<a class="favIt" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'">FAV</a></div> \
+										<div class="cover"><a class="favIt" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" rel="gal'+i+'" class="swipebox" data-id="'+archive[a].hook+'" data-cover="'+archive[a].cover+'"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+archive[a].cover+'" alt=""></a>'+archive[a].name+'</div> \
 									  </li>');
 									 
 									 
@@ -482,10 +482,10 @@
 				
 				//FETCH DATA
 				var Data = [
-							{
-							    id: id,
-							    cover: cover 
-							}
+								{
+									id: id,
+									cover: cover 
+								}
 							];
 						
 			 	window.localStorage.setItem("favJSON", JSON.stringify(Data));
@@ -495,7 +495,7 @@
 				$('#sidr-right').append('<div style="width:100%; text-align:center;"> \
 					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+cover+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+cover+'" alt="" style="width: 70%;margin: 23px;"></a> \
 				  </div>');
-			 	
+			 	$(this).html('<img src="images/star.png" width="11px" style="width:11px" />');
 			}else{
 				//FETCH DATA
 				var Data = [
@@ -526,6 +526,8 @@
 					$('#sidr-right').append('<div style="width:100%; text-align:center;"> \
 					<a href="http://www.titlurile-zilei.com/assets/upload/mobile/'+cover+'" rel="gfavs" class="swipebox" onclick="$.sidr(\'close\', \'sidr-right\');"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/'+cover+'" alt="" style="width: 70%;margin: 23px;"></a> \
 				  </div>');
+				  
+				  $(this).html('<img src="images/star.png" width="11px" style="width:11px"  />');
 					
 				}
 			 	//console.log(value);
