@@ -389,7 +389,7 @@ $(function () {
                         dataType: "JSON",
                         success: function (s) {
                             for (var o in s) {
-                                $("#cat" + e[i].id).append('<li><div class="cover"><a class="favIt" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '">Ad&atilde;ugare la favorite +</a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" rel="gal' + t + '" class="swipebox" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" alt=""></a>' + s[o].name + "</div></li>");
+                                $("#cat" + e[i].id).append('<li><div class="cover"><a class="favIt" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '">Favorite <span style="color:red;">+</span></a><a href="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" rel="gal' + t + '" class="swipebox" data-id="' + s[o].hook + '" data-cover="' + s[o].cover + '"><img src="http://www.titlurile-zilei.com/assets/upload/mobile/' + s[o].cover + '" alt=""></a>' + s[o].name + "</div></li>");
                                 r = [{
                                     id: e[i].id,
                                     hook: s[o].hook,
