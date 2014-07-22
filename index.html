@@ -338,7 +338,14 @@ $(function () {
     $(".Mmenu").sidr({
         name: "menu",
         side: "left",
-        source: "#menu"
+        source: "#menu",
+		onopen:function(){
+				$('.ui-page').addEventListener('touchmove', function(e) { 
+					e.preventDefault(); }, false);
+				},
+		onclose:function(){
+		$('.ui-page').addEventListener('touchmove', true, true);
+		}
     });
     $(".iconFb").sidr({
         name: "sidr-right",
