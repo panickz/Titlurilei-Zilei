@@ -18,6 +18,10 @@ body *
 	text-shadow: none;
 
 }
+.ui-page{
+	overflow-x: hidden;
+	width: 100%;
+}
 .favoritos
 {
 	position:fixed;
