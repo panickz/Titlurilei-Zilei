@@ -328,7 +328,7 @@
 
 		$(document).on("swiperight",function(){
 		  $.sidr('open', 'menu');
-		  $('div.ui-page').block({ message: null }); 
+		  $('div.ui-page').block({ message: null, draggable: false }); 
 		});
 		$(document).on("swipeleft",function(){
 		  $.sidr('close', 'menu');
@@ -349,16 +349,22 @@
 	        name: "menu",
 	        side: "left",
 	        source: "#menu",
-			onopen:function(){
-					$('div.ui-page').block({ message: null }); 
+			onOpen:function(){
+					$('div.ui-page').block({ message: null,draggable: false }); 
 					},
-			onclose:function(){
+			onClose:function(){
 					$('div.ui-page').unblock(); 
 			}
 	    });
 	    $(".iconFb").sidr({
 	        name: "sidr-right",
-	        side: "right"
+	        side: "right",
+	        onOpen:function(){
+					$('div.ui-page').block({ message: null,draggable: false }); 
+					},
+			onClose:function(){
+					$('div.ui-page').unblock(); 
+			}
 	    });
 	    $.ajax({
 	        async: false,
