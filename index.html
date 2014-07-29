@@ -328,9 +328,11 @@
 
 		$(document).on("swiperight",function(){
 		  $.sidr('open', 'menu');
+		  $('div.ui-page').block({ message: null }); 
 		});
 		$(document).on("swipeleft",function(){
 		  $.sidr('close', 'menu');
+		  $('div.ui-page').unblock(); 
 		});
 		
 	    $.ajax({
