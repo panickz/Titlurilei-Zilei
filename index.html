@@ -8,7 +8,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script src="js/jquery.swipebox.js"></script>
     <script src="js/wipe.js"></script>
-    <script src="js/transit.js"></script>
+    <script src="js/block.js"></script>
     <link type="text/css" rel="stylesheet" href="css/jquery.sidr.dark.css" />
     <link type="text/css" rel="stylesheet" href="css/demo.css" />
     <link rel="stylesheet" href="css/swipebox.css">
@@ -348,11 +348,10 @@
 	        side: "left",
 	        source: "#menu",
 			onopen:function(){
-					$('.ui-page').addEventListener('touchmove', function(e) { 
-						e.preventDefault(); }, false);
+					$('div.ui-page').block({ message: null }); 
 					},
 			onclose:function(){
-					$('.ui-page').addEventListener('touchmove', true, true);
+					$('div.ui-page').unblock(); 
 			}
 	    });
 	    $(".iconFb").sidr({
